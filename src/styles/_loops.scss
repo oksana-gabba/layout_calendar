@@ -1,0 +1,17 @@
+@for $i from 1 through 31 {
+  .calendar :nth-child(#{$i})::before {
+    content: "#{$i}";
+  }
+}
+
+@for $i from 28 through 31 {
+  .calendar-#{$i} > div:nth-child(n+#{$i+1}) {
+    display: none;
+  }
+}
+
+@each $day, $order in $days {
+  .calendar-#{$day} > div:first-child {
+    margin-left: $order * ($sell-size + $space);
+  }
+}
